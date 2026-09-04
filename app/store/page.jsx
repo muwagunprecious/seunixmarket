@@ -1,18 +1,19 @@
 'use client'
-import { dummyStoreDashboardData } from "@/assets/assets"
+import { dummyStoreDashboardData, dummyStoreData } from "@/assets/assets"
 import Loading from "@/components/Loading"
-import { CircleDollarSignIcon, ShoppingBasketIcon, StarIcon, TagsIcon } from "lucide-react"
+import { CircleDollarSignIcon, ShoppingBasketIcon, StarIcon, TagsIcon, ShieldCheck, BadgeCheck } from "lucide-react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 export default function Dashboard() {
 
-    const currency = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || '$'
+    const currency = process.env.NEXT_PUBLIC_CURRENCY_SYMBOL || '₦'
 
     const router = useRouter()
 
     const [loading, setLoading] = useState(true)
+    const [storeInfo, setStoreInfo] = useState(dummyStoreData)
     const [dashboardData, setDashboardData] = useState({
         totalProducts: 0,
         totalEarnings: 0,
@@ -29,6 +30,7 @@ export default function Dashboard() {
 
     const fetchDashboardData = async () => {
         setDashboardData(dummyStoreDashboardData)
+        setStoreInfo(dummyStoreData)
         setLoading(false)
     }
 
@@ -40,7 +42,40 @@ export default function Dashboard() {
 
     return (
         <div className=" text-slate-500 mb-28">
-            <h1 className="text-2xl">Seller <span className="text-slate-800 font-medium">Dashboard</span></h1>
+            <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
+                <div>
+                    <h1 className="text-2xl">Seller <span className="text-slate-800 font-medium">Dashboard</span></h1>
+                    <p className="text-sm text-slate-500 mt-1">Manage your store products, orders, and identity verification status.</p>
+                </div>
+            </div>
+
+            {/* Seller Verification Card */}
+            <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-xl p-6 mb-8 shadow-md flex max-md:flex-col items-start md:items-center justify-between gap-6">
+                <div className="flex items-center gap-4">
+                    <Image src={storeInfo.logo} alt={storeInfo.name} width={64} height={64} className="w-16 h-16 rounded-full bg-white p-1 object-contain shrink-0" />
+                    <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                            <h2 className="text-xl font-bold">{storeInfo.name}</h2>
+                            <span className="text-xs bg-slate-700 text-slate-200 px-2.5 py-0.5 rounded-full font-mono">@{storeInfo.username}</span>
+                            <span className={`text-xs font-semibold px-3 py-0.5 rounded-full flex items-center gap-1 ${storeInfo.status === 'approved' ? 'bg-green-500/20 text-green-300 border border-green-500/30' : 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30'}`}>
+                                <BadgeCheck size={14} />
+                                {storeInfo.status === 'approved' ? 'Identity Verified & Approved' : 'Verification Pending'}
+                            </span>
+                        </div>
+                        <p className="text-slate-300 text-xs mt-1 max-w-xl">{storeInfo.description}</p>
+                    </div>
+                </div>
+
+                <div className="bg-slate-800/80 border border-slate-700 rounded-lg p-3.5 flex flex-col gap-1 text-xs shrink-0 w-full md:w-auto">
+                    <p className="text-slate-400 font-medium flex items-center gap-1.5">
+                        <ShieldCheck size={16} className="text-green-400" />
+                        National Identification Number (NIN):
+                    </p>
+                    <span className="font-mono text-sm tracking-widest text-green-300 font-bold bg-slate-900/90 px-3 py-1 rounded border border-slate-700">
+                        {storeInfo.nin || '12345678901'}
+                    </span>
+                </div>
+            </div>
 
             <div className="flex flex-wrap gap-5 my-10 mt-4">
                 {

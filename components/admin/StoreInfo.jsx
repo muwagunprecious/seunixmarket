@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image"
-import { MapPin, Mail, Phone } from "lucide-react"
+import { MapPin, Mail, Phone, ShieldCheck } from "lucide-react"
 
 const StoreInfo = ({store}) => {
     return (
@@ -24,6 +24,12 @@ const StoreInfo = ({store}) => {
             </div>
 
             <p className="text-slate-600 my-5 max-w-2xl">{store.description}</p>
+            <div className="bg-slate-50 border border-slate-200 rounded-md p-3 my-3 max-w-md">
+                <p className="flex items-center gap-2 font-medium text-slate-800">
+                    <ShieldCheck size={18} className="text-green-600" />
+                    NIN Verification No: <span className="font-mono tracking-wider font-semibold text-slate-900 bg-white border border-slate-300 px-2 py-0.5 rounded">{store.nin || 'Not Provided'}</span>
+                </p>
+            </div>
             <p className="flex items-center gap-2"> <MapPin size={16} /> {store.address}</p>
             <p className="flex items-center gap-2"><Phone size={16} /> {store.contact}</p>
             <p className="flex items-center gap-2"><Mail size={16} />  {store.email}</p>

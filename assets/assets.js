@@ -47,6 +47,7 @@ export const dummyStoreData = {
     username: "happyshop",
     address: "3rd Floor, Happy Shop , New Building, 123 street , c sector , NY, US",
     status: "approved",
+    nin: "12345678901",
     isActive: true,
     logo: happy_store,
     email: "happyshop@example.com",
@@ -333,6 +334,7 @@ export const storesDummyData = [
         username: "greatstack",
         address: "123 Maplewood Drive Springfield, IL 62704 USA",
         status: "approved",
+        nin: "98765432109",
         isActive: true,
         logo: gs_logo,
         email: "greatstack@example.com",
@@ -349,6 +351,7 @@ export const storesDummyData = [
         username: "happyshop",
         address: "3rd Floor, Happy Shop , New Building, 123 street , c sector , NY, US",
         status: "approved",
+        nin: "12345678901",
         isActive: true,
         logo: happy_store,
         email: "happyshop@example.com",
@@ -356,6 +359,28 @@ export const storesDummyData = [
         createdAt: "2025-08-22T08:34:15.155Z",
         updatedAt: "2025-08-22T08:34:47.162Z",
         user: dummyUserData,
+    },
+    {
+        id: "cmemks99a0009tat8v7x923ab",
+        userId: "user_99aB281HVtovbs13X2cmqefddX",
+        name: "NextGen Electronics",
+        description: "Leading vendor for verified smart gadgets, mobile accessories, and home gadgets.",
+        username: "nextgenelectronics",
+        address: "15 Marina Road, Victoria Island, Lagos, Nigeria",
+        status: "pending",
+        nin: "45678901234",
+        isActive: false,
+        logo: gs_logo,
+        email: "contact@nextgen.ng",
+        contact: "+234 8012345678",
+        createdAt: "2025-09-02T10:15:00.000Z",
+        updatedAt: "2025-09-02T10:15:00.000Z",
+        user: {
+            id: "user_99aB281HVtovbs13X2cmqefddX",
+            name: "Alexander Pierce",
+            email: "alexander@nextgen.ng",
+            image: gs_logo
+        },
     }
 ]
 
