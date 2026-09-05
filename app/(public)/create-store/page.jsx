@@ -5,8 +5,12 @@ import Image from "next/image"
 import toast from "react-hot-toast"
 import Loading from "@/components/Loading"
 
+import { registerSeller } from "@/lib/features/auth/authSlice"
+import { useDispatch } from "react-redux"
+
 export default function CreateStore() {
 
+    const dispatch = useDispatch()
     const [alreadySubmitted, setAlreadySubmitted] = useState(false)
     const [status, setStatus] = useState("")
     const [loading, setLoading] = useState(true)
@@ -35,8 +39,20 @@ export default function CreateStore() {
         e.preventDefault()
         if (!storeInfo.nin || storeInfo.nin.length !== 11 || !/^\d+$/.test(storeInfo.nin)) {
             toast.error("Please enter a valid 11-digit National Identification Number (NIN).")
-            throw new Error("Invalid NIN")
+            return
         }
+
+        dispatch(registerSeller({
+            name: storeInfo.name,
+            email: storeInfo.email,
+            storeName: storeInfo.name,
+            storeUsername: storeInfo.username,
+            description: storeInfo.description,
+            nin: storeInfo.nin,
+            contact: storeInfo.contact,
+            address: storeInfo.address
+        }))
+
         setStatus("pending")
         setMessage(`Your store "${storeInfo.name}" with NIN Verification (${storeInfo.nin}) has been submitted successfully! Admin will review your verification details.`)
         setAlreadySubmitted(true)

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="jacketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="collarGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="30" fill="#F8FAFC"/>
+  <!-- Body -->
+  <path d="M 150 110 L 210 160 L 250 130 L 290 160 L 350 110 L 430 180 L 370 260 L 330 230 L 330 430 L 170 430 L 170 230 L 130 260 L 70 180 Z" fill="url(#jacketGrad)" stroke="#0F172A" stroke-width="4" stroke-linejoin="round"/>
+  <!-- Center Zipper -->
+  <line x1="250" y1="210" x2="250" y2="430" stroke="#CBD5E1" stroke-width="4" stroke-dasharray="4 2"/>
+  <!-- Lapels / Collar -->
+  <polygon points="210,160 250,130 250,210 200,210" fill="url(#collarGrad)"/>
+  <polygon points="290,160 250,130 250,210 300,210" fill="url(#collarGrad)"/>
+  <!-- Pockets -->
+  <rect x="185" y="320" width="50" height="60" rx="6" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+  <rect x="265" y="320" width="50" height="60" rx="6" fill="#1E293B" stroke="#475569" stroke-width="2"/>
+</svg>
